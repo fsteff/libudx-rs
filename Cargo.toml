@@ -1,0 +1,17 @@
+[package]
+name = "libudx"
+version = "0.1.0"
+authors = ["Stefan Fixl <fsteff@gmx.at>"]
+edition = "2018"
+
+[lib]
+name = "udx"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+futures = "0.3"
+
+[build-dependencies]
+bindgen = "0.60"
+cmake = "0.1"
