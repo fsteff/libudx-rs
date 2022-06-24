@@ -8,23 +8,10 @@ use cmake;
 fn main() {
 
     let uv = cmake::build("libudx/vendor/libuv");
-    //println!("cargo:rustc-link-search=native={}/lib", uv.display());
-    //println!("cargo:rustc-link-lib=static=uv");
-
     let udx = cmake::build("libudx");
     println!("cargo:rustc-link-search=native={}/lib", udx.display());
     println!("cargo:rustc-link-lib=static=udx");
     println!("cargo:rustc-link-lib=static=uv_a");
-
-    // Tell cargo to look for shared libraries in the specified directory
-    //println!("cargo:rustc-link-search=libudx/build/Debug");
-
-    // Tell cargo to tell rustc to link the system bzip2
-    // shared library.
-    //println!("cargo:rustc-link-lib=udx");
-
-    // Tell cargo to invalidate the built crate whenever the wrapper changes
-    //println!("cargo:rerun-if-changed=libudx/include/udx.h");
 
     let bindings = bindgen::Builder::default()
         .header(format!("{}/include/udx.h", udx.display()))
